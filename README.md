@@ -14,7 +14,7 @@ This is a web-based application for classifying skin cancer through images using
 To set up the project locally, follow these steps:
 1. Clone the repository:
    ```bash
-   git clone [repository-url]
+   git clone [https://github.com/niconicoo0w0/CS445_FinalProject.git]
    ```
 2. Download the model:
    https://drive.google.com/file/d/1--9xSv2z0aDv_gpp5dZgOh9isyTAtxML/view?usp=sharing

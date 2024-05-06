@@ -35,7 +35,7 @@ To run the application:
    ```bash
    model = tf.keras.models.load_model('replace/it/with/your/actual/path')
    ```
-2. Run the Flask application:
+2. In terminal, run the Flask application:
    ```bash
    python app.py
    ```

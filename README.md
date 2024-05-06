@@ -1,8 +1,5 @@
-
----
-
 # CS445 Final Project - Skin Cancer Classification
-
+---
 ## Introduction
 This is a web-based application for classifying skin cancer through images using a Convolutional Neural Network (CNN). Users could upload their skin lesions images and receive an immediate prediction of the disease type. 
 
@@ -11,9 +8,7 @@ This is a web-based application for classifying skin cancer through images using
 - [Usage](#usage)
 - [Features](#features)
 - [Dependencies](#dependencies)
-- [Documentation](#documentation)
 - [Contributors](#contributors)
-- [License](#license)
 
 ## Installation
 To set up the project locally, follow these steps:
@@ -21,7 +16,9 @@ To set up the project locally, follow these steps:
    ```bash
    git clone [repository-url]
    ```
-2. Install the required dependencies:
+2. Download the model:
+   https://drive.google.com/file/d/1--9xSv2z0aDv_gpp5dZgOh9isyTAtxML/view?usp=sharing
+3. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
@@ -57,9 +54,4 @@ To run the application:
 - Rui Zhou (ruizhou3@illinois.edu)
 - Tong Li (tongli5@illinois.edu)
 - Zhilan Wang (zhilanw2@illinois.edu)
-
-## Download Our Model :)
-https://drive.google.com/file/d/1--9xSv2z0aDv_gpp5dZgOh9isyTAtxML/view?usp=sharing
-
----
 

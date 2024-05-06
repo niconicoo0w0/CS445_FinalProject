@@ -20,8 +20,9 @@ To set up the project locally, follow these steps:
    ```bash
    https://drive.google.com/file/d/1--9xSv2z0aDv_gpp5dZgOh9isyTAtxML/view?usp=sharing
    ```
-4. Install the required dependencies:
+3. Install the required dependencies:
    ```bash
+   cd CS445_FinalProject
    pip install -r requirements.txt
    ```
    

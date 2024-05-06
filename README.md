@@ -22,7 +22,7 @@ To set up the project locally, follow these steps:
    ```
 3. Create a new env:
    ```bash
-   conda create -n myenv python=3.10
+   conda create -n myenv
    conda activate myenv
    ```
 4. Navigate to the project directory.

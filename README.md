@@ -17,8 +17,10 @@ To set up the project locally, follow these steps:
    git clone https://github.com/niconicoo0w0/CS445_FinalProject.git
    ```
 2. Download the model:
+   ```bash
    https://drive.google.com/file/d/1--9xSv2z0aDv_gpp5dZgOh9isyTAtxML/view?usp=sharing
-3. Install the required dependencies:
+   ```
+4. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
    ```

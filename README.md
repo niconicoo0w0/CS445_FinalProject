@@ -31,15 +31,19 @@ To set up the project locally, follow these steps:
    
 ## Usage
 To run the application:
-1. Change the path for the model in app.py.
+1. Navigate to the project directory.
+   ```bash
+   cd 445_frontend
+   ```
+2. Change the path for the model in app.py.
    ```bash
    model = tf.keras.models.load_model('replace/it/with/your/actual/path')
    ```
-2. In terminal, run the Flask application:
+3. In terminal, run the Flask application:
    ```bash
    python app.py
    ```
-3. Open a web browser and go to `http://localhost:5000` to access the application.
+4. Open a web browser and go to `http://localhost:5000` to access the application.
 
 ## Features
 - Users can upload images of skin lesions for analysis.

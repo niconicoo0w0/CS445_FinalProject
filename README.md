@@ -1,9 +1,7 @@
-# CS445_FinalProject
-Skin cancer classification
 
 ---
 
-# Skin Cancer Classification
+# CS445 Final Project - Skin Cancer Classification
 
 ## Introduction
 This project is a web-based application for classifying skin cancer through images using a Convolutional Neural Network (CNN). The application allows users to upload images of skin lesions and receive an immediate prediction of the skin lesion type. The backend model is implemented in Python using TensorFlow and Keras, and the front end is built using Flask.

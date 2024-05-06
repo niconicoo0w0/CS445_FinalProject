@@ -20,24 +20,26 @@ To set up the project locally, follow these steps:
    ```bash
    https://drive.google.com/file/d/1--9xSv2z0aDv_gpp5dZgOh9isyTAtxML/view?usp=sharing
    ```
-3. Install the required dependencies:
+3. Navigate to the project directory.
    ```bash
    cd CS445_FinalProject
+   ```
+4. Install the required dependencies:
+   ```bash
    pip install -r requirements.txt
    ```
    
 ## Usage
 To run the application:
-1. Navigate to the project directory.
-2. Change the path for the model in app.py.
+1. Change the path for the model in app.py.
    ```bash
    model = tf.keras.models.load_model('replace/it/with/your/actual/path')
    ```
-4. Run the Flask application:
+2. Run the Flask application:
    ```bash
    python app.py
    ```
-5. Open a web browser and go to `http://localhost:5000` to access the application.
+3. Open a web browser and go to `http://localhost:5000` to access the application.
 
 ## Features
 - Users can upload images of skin lesions for analysis.

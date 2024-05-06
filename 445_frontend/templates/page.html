@@ -1,0 +1,190 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Classification</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f92c;
+            background-image: url('https://scontent-ord5-2.xx.fbcdn.net/v/t39.30808-6/272257592_3896364987169044_868456567001465893_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tvmN6UG2OMkQ7kNvgGTqNRv&_nc_ht=scontent-ord5-2.xx&oh=00_AfDu21e8mPTA689wrs9hLyWJpG0Ql6YiWJx5rc4AABfUyA&oe=663A07E8');
+            background-size: cover;
+            background-attachment: fixed;
+            color: #f3efeff4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #451237;
+            background: rgba(255, 255, 255, 0.709);
+            padding: 10px;
+            border-radius: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        form {
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.717);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #result {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fbf9fa;
+            padding: 10px;
+            border-radius: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+        #info {
+            font-size: 22px;
+            padding: 10px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        #details {
+            font-size: 16px;
+            padding: 8px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-style: italic;
+        }
+        /* #result, #info, #details {
+            padding: 5px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        } */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #5D1049;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        button:hover {
+            background-color: #451237;
+        }
+        .more-info-link {
+            /* margin-top: 10px; */
+            font-size: 15px;
+            color: #1d86f6;
+            text-decoration: none;
+        }
+        .more-info-link:hover {
+            text-decoration: underline;
+        }
+        #progress-bar {
+            width: 0%;
+            height: 20px;
+            background-color: #5D1049;
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Skin Cancer Image Classification</h1>
+    <form id="upload-form">
+        <input type="file" name="file" accept="image/*" aria-label="Upload your image for analysis">
+        <button type="submit">Analyze Image</button>
+    </form>
+    <div id="progress-bar"></div>
+    <img id="uploaded-image" src="#" alt="Uploaded Image" style="display:none;">
+    <div id="result"></div>
+    <div id="info"></div>
+    <a href="" id="learn-more" class="more-info-link" target="_blank" aria-label="Learn more about the predicted disease">Learn more about this disease</a>
+    <div id="details"></div>
+    <script>
+
+        const diseaseDescriptions = {
+            'akiec': {
+                description: 'Actinic Keratoses and Intraepithelial Carcinoma / Bowen\'s Disease: These precancerous patches result from sun exposure. Often appear as rough, scaly spots on areas frequently exposed to the sun, such as the face, ears, and hands.',
+                url: 'https://www.skincancer.org/actinic-keratosis/'
+            },
+            'bcc': {
+                description: 'Basal Cell Carcinoma: It appears as light pink, shiny bumps. It is known for slow growth and typically occurs on sun-exposed areas of the skin, but rarely metastasizes.',
+                url: 'https://www.skincancer.org/basal-cell-carcinoma/'
+            },
+            'bkl': {
+                description: 'Benign Keratosis: Brown or tan exophytic lesions that can resemble skin cancer but are non-cancerous. Often occurring in older adults, these lesions can be a sign of skin aging or sun damage.',
+                url: 'https://www.mayoclinic.org/diseases-conditions/seborrheic-keratosis/symptoms-causes/syc-20353878'
+            },
+            'df': {
+                description: 'Dermatofibroma: Dense, non-cancerous bumps found mainly on the legs. They are usually small, painless, and may vary in color from pink to dark brown.',
+                url: 'https://www.aad.org/public/diseases/a-z/dermatofibroma-overview'
+            },
+            'mel': {
+                description: 'Melanoma: A dangerous cancer from melanocytes, it can appear suddenly and change rapidly. Melanoma is highly aggressive and can spread to other parts of the body if not treated early.',
+                url: 'https://www.skincancer.org/melanoma/'
+            },
+            'nv': {
+                description: 'Melanocytic Nevi: Common benign moles that vary in color and are usually harmless. These moles can develop into melanoma, making regular skin checks important.',
+                url: 'https://www.aad.org/public/diseases/a-z/moles-overview'
+            },
+            'vasc': {
+                description: 'Vascular Lesions: Includes hemangiomas and telangiectasias, often benign but can sometimes require attention. These lesions are typically bright red and can be a cosmetic concern or cause symptoms like bleeding or ulceration.',
+                url: 'https://vascular.org/patient-resources/vascular-conditions'
+            }
+        };
+
+        document.getElementById('upload-form').onsubmit = async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('file', event.target.file.files[0]);
+
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = '0%';
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const uploadedImage = document.getElementById('uploaded-image');
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.file.files[0]);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (!response.ok) throw new Error('Failed to upload image');
+
+                response.onprogress = function(event) {
+                    if (event.lengthComputable) {
+                        const percentComplete = (event.loaded / event.total) * 100;
+                        progressBar.style.width = `${percentComplete}%`;
+                    }
+                };
+                const result = await response.json();
+                const disease = result.Disease.toLowerCase();
+                const diseaseInfo = diseaseDescriptions[disease];
+
+                document.getElementById('result').textContent = 'Predicted Disease: ' + disease.charAt(0).toUpperCase() + disease.slice(1);
+                document.getElementById('info').textContent = diseaseInfo.description;
+                document.getElementById('learn-more').href = diseaseInfo.url;
+                document.getElementById('details').textContent = 'Note: This prediction is based on visual patterns only and should be verified by a dermatologist for accurate diagnosis.';
+            } catch (error) {
+                document.getElementById('result').textContent = 'Error: ' + error.message;
+            }
+        };
+    </script>
+</body>
+</html> 

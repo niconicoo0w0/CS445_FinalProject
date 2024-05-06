@@ -4,7 +4,7 @@
 # CS445 Final Project - Skin Cancer Classification
 
 ## Introduction
-This project is a web-based application for classifying skin cancer through images using a Convolutional Neural Network (CNN). The application allows users to upload images of skin lesions and receive an immediate prediction of the skin lesion type. The backend model is implemented in Python using TensorFlow and Keras, and the front end is built using Flask.
+This is a web-based application for classifying skin cancer through images using a Convolutional Neural Network (CNN). Users could upload their skin lesions images and receive an immediate prediction of the disease type. 
 
 ## Table of Contents
 - [Installation](#installation)
@@ -25,21 +25,24 @@ To set up the project locally, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
-
+   
 ## Usage
 To run the application:
 1. Navigate to the project directory.
-2. Run the Flask application:
+2. Change the path for the model in app.py.
+   ```bash
+   model = tf.keras.models.load_model('replace/it/with/your/actual/path')
+   ```
+4. Run the Flask application:
    ```bash
    python app.py
    ```
-3. Open a web browser and go to `http://localhost:5000` to access the application.
+5. Open a web browser and go to `http://localhost:5000` to access the application.
 
 ## Features
-- **Image Upload:** Users can upload images of skin lesions for analysis.
-- **Real-Time Classification:** The application provides real-time predictions of the type of skin cancer.
-- **Visual Feedback:** Displays the uploaded image and prediction results.
-- **Educational Links:** Provides links for further information on the predicted skin lesion type.
+- Users can upload images of skin lesions for analysis.
+- The application provides real-time predictions with approximately 80% accuracy of the type of skin cancer.
+- Provides links for further information on the predicted skin lesion type.
 
 ## Dependencies
 - Python 3
@@ -48,12 +51,6 @@ To run the application:
 - Keras
 - Pillow
 - NumPy
-
-## Documentation
-The main components of the project include:
-- `app.py`: The Flask application file.
-- `page.html`: The HTML template for the front end.
-- `skincancerclassification.ipynb`: Jupyter notebook containing the CNN model training and evaluation.
 
 ## Contributors
 - Kaiwen Ren (kaiwenr2@illinois.edu)

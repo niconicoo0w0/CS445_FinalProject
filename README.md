@@ -20,16 +20,11 @@ To set up the project locally, follow these steps:
    ```bash
    https://drive.google.com/file/d/1--9xSv2z0aDv_gpp5dZgOh9isyTAtxML/view?usp=sharing
    ```
-3. Create a new env:
-   ```bash
-   conda create -n myenv
-   conda activate myenv
-   ```
-4. Navigate to the project directory.
+3. Navigate to the project directory.
    ```bash
    cd CS445_FinalProject
    ```
-5. Install the required dependencies:
+4. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
    ```
